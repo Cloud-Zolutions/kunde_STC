@@ -37,20 +37,6 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// Losninger tabs (only if on that page)
-const tabs = document.querySelectorAll('.sol-tab');
-if (tabs.length) {
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      const target = tab.dataset.panel;
-      tabs.forEach(t => t.classList.remove('active'));
-      document.querySelectorAll('.sol-panel').forEach(p => p.classList.remove('active'));
-      tab.classList.add('active');
-      document.getElementById(target).classList.add('active');
-    });
-  });
-}
-
 // Contact form submission (prevent default, show confirmation)
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
