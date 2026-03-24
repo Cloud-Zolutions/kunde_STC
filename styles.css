@@ -223,6 +223,7 @@ img { display: block; max-width: 100%; }
 /* Contact page */
 .contact-section { padding: 100px 0; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+.contact-grid--single { grid-template-columns: 1fr; max-width: 600px; }
 .contact-info h2 { font-size: clamp(26px, 3.5vw, 46px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 20px; }
 .contact-info p { font-size: 17px; color: var(--text-2); line-height: 1.8; margin-bottom: 32px; }
 .contact-details { display: flex; flex-direction: column; gap: 16px; }

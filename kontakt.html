@@ -67,8 +67,8 @@
 <!-- CONTACT SECTION -->
 <section class="contact-section">
   <div class="container">
-    <div class="contact-grid">
-      <!-- LEFT: INFO -->
+    <div class="contact-grid contact-grid--single">
+      <!-- INFO -->
       <div class="contact-info fade-up">
         <p class="section-eyebrow">Kontaktoplysninger</p>
         <h2>Lad os tale om<br>dit event</h2>
@@ -102,42 +102,6 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             </a>
           </div>
-        </div>
-      </div>
-
-      <!-- RIGHT: FORM -->
-      <div class="fade-up d1">
-        <div class="contact-form">
-          <p style="font-size: 20px; font-weight: 700; margin-bottom: 8px;">Send os en besked</p>
-          <p style="font-size: 14px; color: var(--text-2); margin-bottom: 28px;">Udfyld formularen, og vi vender tilbage hurtigst muligt.</p>
-          <form id="contactForm" action="https://formsubmit.co/gustav@cz.dk" method="POST">
-            <input type="hidden" name="_subject" value="Ny henvendelse fra STC hjemmeside">
-            <input type="hidden" name="_captcha" value="true">
-            <input type="hidden" name="_template" value="table">
-            <input type="text" name="_honey" style="display:none;">
-            <input type="hidden" name="_next" value="https://cloud-zolutions.github.io/STC/kontakt.html?sendt=1">
-            <div class="form-group">
-              <label for="name">Navn</label>
-              <input type="text" id="name" name="name" placeholder="Dit fulde navn" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Telefon</label>
-              <input type="tel" id="phone" name="phone" placeholder="Dit telefonnummer">
-            </div>
-            <div class="form-group">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="din@email.dk" required>
-            </div>
-            <div class="form-group">
-              <label for="subject">Emne</label>
-              <input type="text" id="subject" name="subject" placeholder="Hvad drejer din henvendelse sig om?">
-            </div>
-            <div class="form-group">
-              <label for="message">Besked</label>
-              <textarea id="message" name="message" placeholder="Beskriv dit event, ønskede dato og hvad du har brug for..." required></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary btn-lg" style="width: 100%; justify-content: center;">Send besked</button>
-          </form>
         </div>
       </div>
     </div>
