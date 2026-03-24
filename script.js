@@ -37,18 +37,10 @@ document.querySelectorAll('.faq-item').forEach(item => {
   });
 });
 
-// Contact form submission (prevent default, show confirmation)
-const contactForm = document.getElementById('contactForm');
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const btn = contactForm.querySelector('button[type="submit"]');
-    btn.textContent = 'Besked sendt!';
-    btn.style.background = '#22c55e';
-    setTimeout(() => {
-      btn.textContent = 'Send besked';
-      btn.style.background = '';
-      contactForm.reset();
-    }, 3000);
-  });
+// Show success message if redirected back after FormSubmit
+if (window.location.search.includes('sendt=1')) {
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.innerHTML = '<div style="padding:32px;text-align:center;"><p style="font-size:20px;font-weight:700;margin-bottom:8px;">Tak for din besked!</p><p style="color:var(--text-2);">Vi vender tilbage hurtigst muligt.</p></div>';
+  }
 }
