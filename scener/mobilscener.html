@@ -10,47 +10,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <style>
+    /* shared intro */
     .ss-intro { padding: 80px 0 64px; }
     .ss-intro-body { max-width: 720px; }
     .ss-intro-body p { font-size: 16px; color: var(--text-2); line-height: 1.8; margin-top: 14px; }
     .ss-intro-body p:first-child { margin-top: 0; }
 
-    .ss-section { padding: 64px 0; border-top: 1px solid var(--border); }
-    .ss-section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 8px; }
-    .ss-section-h { font-size: clamp(20px, 2.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
-    .ss-section-p { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-top: 12px; }
+    /* standardpakker / cards */
+    .ss-std { padding: 72px 0 64px; border-top: 1px solid var(--border); }
+    .ss-std-intro { margin-bottom: 48px; }
+    .ss-std-intro-lead { font-size: 14px; font-weight: 600; letter-spacing: 0.06em; color: var(--text-3); text-transform: uppercase; margin-bottom: 6px; }
+    .ss-std-intro-h { font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.025em; }
+    .ss-std-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+    .ss-std-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 36px 32px; }
+    .ss-std-card-eyebrow { display: none; }
+    .ss-std-card-h { font-size: clamp(18px, 2vw, 22px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .ss-std-card-desc { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .ss-std-feat { margin-bottom: 20px; }
+    .ss-std-feat:last-of-type { margin-bottom: 0; }
+    .ss-std-feat-title { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 8px; }
+    .ss-std-feat-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .ss-std-feat-list li { font-size: 13px; color: var(--text-2); line-height: 1.65; padding-left: 14px; position: relative; }
+    .ss-std-feat-list li::before { content: '—'; position: absolute; left: 0; color: var(--blue-light); font-size: 11px; top: 3px; }
+    .ss-std-card-footer { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 12px; }
+    .ss-std-card-footer p { font-size: 13px; color: var(--text-2); line-height: 1.75; width: 100%; }
 
-    /* sizes list */
-    .ss-sizes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0 24px; }
-    .ss-size-box { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 20px 16px; text-align: center; }
-    .ss-size-num { font-size: 18px; font-weight: 800; letter-spacing: -0.02em; }
-    .ss-size-lbl { font-size: 11px; color: var(--text-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
-
-    /* highlight box */
-    .ss-highlight { background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.2); border-radius: var(--r); padding: 18px 22px; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--blue-light); line-height: 1.6; }
-
-    /* features 2-col */
-    .ss-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
-    .ss-feature { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; }
-    .ss-feature-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-    .ss-feature-body { font-size: 14px; color: var(--text-2); line-height: 1.75; }
-
-    /* cert badge */
-    .ss-cert { display: flex; gap: 20px; align-items: flex-start; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; margin-top: 40px; }
-    .ss-cert-icon { flex-shrink: 0; width: 44px; height: 44px; background: rgba(59,130,246,0.12); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-    .ss-cert-icon svg { width: 22px; height: 22px; stroke: var(--blue-light); }
-    .ss-cert-body h3 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-    .ss-cert-body p { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+    /* size pills */
+    .ss-size-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .ss-size-pill { background: rgba(59,130,246,0.08); border: 1px solid rgba(59,130,246,0.2); border-radius: 6px; padding: 6px 14px; font-size: 13px; font-weight: 700; color: var(--blue-light); }
 
     @media (max-width: 900px) {
-      .ss-sizes { grid-template-columns: repeat(2, 1fr); }
-      .ss-feature-grid { grid-template-columns: 1fr; }
+      .ss-std-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .ss-intro { padding: 56px 0 48px; }
-      .ss-section { padding: 48px 0; }
-      .ss-sizes { grid-template-columns: repeat(2, 1fr); }
-      .ss-cert { flex-direction: column; }
+      .ss-std { padding: 48px 0; }
     }
   </style>
 </head>
@@ -114,115 +108,184 @@
   </div>
 </div>
 
-<!-- INTRO -->
-<section class="ss-intro">
+<!-- MOBILSCENER INTRO -->
+<section class="ss-std" style="border-top:none;">
   <div class="container">
-    <div class="ss-intro-body fade-up">
-      <p>Tænk lidt over hvad du lejer. STC HAR HELT NYE MOBILSCENER, SÅ KAN DET IKKE BLIVE BEDRE. STC har købt nye mobilscener med certifikat fra Teknologiske Institut.</p>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Læs om vores</p>
+      <h2 class="ss-std-intro-h">Helt nye mobilscener</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Nye scener med certifikat</p>
+      <h3 class="ss-std-card-h">Mobilscener</h3>
+      <p class="ss-std-card-desc">Tænk lidt over hvad du lejer.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;"><strong>STC har helt nye mobilscener — så kan det ikke blive bedre.</strong></p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">STC har købt nye mobilscener med certifikat fra Teknologisk Institut.</p>
     </div>
   </div>
 </section>
 
 <!-- CERTIFICERET -->
-<section class="ss-section">
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Tryghed & sikkerhed</p>
-    <h2 class="ss-section-h fade-up d1">Certificeret</h2>
-    <div class="ss-cert fade-up d1">
-      <div class="ss-cert-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Tryghed og sikkerhed</p>
+      <h2 class="ss-std-intro-h">Certificeret</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Certifikat fra Teknologisk Institut</p>
+      <h3 class="ss-std-card-h">Certificeret</h3>
+      <p class="ss-std-card-desc">STC har valgt at købe helt nye mobilscener.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC har valgt at gå ind og få Certifikat fra Teknologisk Institut. Det er din tryghed for, at alt lever op til de sidste nye standarder og har de nye Eurocodes beregninger, som alle skal have på deres scener.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Det betyder samtidigt, at du <strong>ikke</strong> skal søge byggetilladelse, når du lejer en STC mobilscene. Du sparer både tid og penge.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">I mange tilfælde skal der søges byggetilladelse eller have certifikat, og hvis tingene ikke er i orden, kan der fra myndighederne gives bøde.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Lej helt nye scener fra STC, hvor tingene er i orden. Er du i tvivl om de nye regler, så ring til STC Mobilscener og få et godt råd. <strong>40 63 42 24</strong>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PRISER -->
+<section class="ss-std" style="padding-top:48px;">
+  <div class="container">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Fair og gennemsigtig</p>
+      <h2 class="ss-std-intro-h">Priser</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Priser & fleksibilitet</p>
+      <h3 class="ss-std-card-h">Fair priser</h3>
+      <p class="ss-std-card-desc">Hos STC arbejder vi ikke med faste priser — men du får altid en fair og gennemsigtig pris, der matcher opgaven. Hvert arrangement er forskelligt, og prisen afhænger af bl.a. geografi, varighed, bemanding og omfang. Derfor skræddersyr vi altid en løsning, der passer præcist til jeres behov. Ring til Morten Lind på <strong>40 63 42 24</strong> og få et uforpligtende tilbud.</p>
+
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Hvad er inkluderet</div>
+        <ul class="ss-std-feat-list">
+          <li>Ingen ekstra betaling for transport frem og tilbage</li>
+          <li>Ingen udgifter til byggesag hos kommunen</li>
+          <li>Forsikring og rengøring er inkluderet</li>
+          <li>Levering sker til aftalt tid</li>
+        </ul>
       </div>
-      <div class="ss-cert-body">
-        <h3>Certifikat fra Teknologisk Institut</h3>
-        <p>STC har valgt at gå ind og få Certifikat fra Teknologisk Institut. Det er din tryghed for, at alt lever op til sidste nye standarder og har de nye Eurocodes beregninger, som alle skal have på deres scener. Det betyder samtidigt, at du IKKE skal søge byggetilladelse, når du lejer en STC mobilscene. Du sparer både tid og penge.</p>
-        <p style="margin-top:10px;">I mange tilfælde skal der søges byggetilladelse eller have certifikat, og hvis tingene ikke er i orden, kan der fra myndighederne gives bøde. Lej helt nye scener fra STC hvor tingene er i orden. Er du i tvivl om de nye regler så ring til STC mobilscener og få et godt råd. 40 63 42 24.</p>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Fleksible sceneløsninger</div>
+        <ul class="ss-std-feat-list">
+          <li>13,5 × 11 meter</li>
+          <li>13,5 × 6 meter</li>
+          <li>10 × 6 meter</li>
+          <li>8 × 11 meter</li>
+          <li>8 × 6 meter</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Specifikationer</div>
+        <ul class="ss-std-feat-list">
+          <li>Justerbar scenegulvshøjde: 0,8 – 1,5 meter</li>
+          <li>Højde fra scenegulv til tag: ca. 4 meter</li>
+          <li>Belastning af tag til lysudstyr: op til 1,2 ton (mulighed for tungere udstyr)</li>
+          <li>Lys og højtalere kan integreres i tagkonstruktionen</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Mobilscener – små og fleksible løsninger</div>
+        <ul class="ss-std-feat-list">
+          <li>7 × 6 × 4 m (ca. 42 m²)</li>
+          <li>5 × 6 × 4 m (ca. 30 m²)</li>
+          <li>5 × 4 × 4 m (ca. 20 m²)</li>
+          <li>Alle vores mobilscener kan laves i andre mål, større og mindre</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Velegnet til</div>
+        <ul class="ss-std-feat-list">
+          <li>Børneunderholdning</li>
+          <li>Solister</li>
+          <li>Mindre bands</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Opsætning</div>
+        <ul class="ss-std-feat-list">
+          <li>Opsætning: ca. 50 minutter</li>
+          <li>Nedtagning: ca. 30 minutter</li>
+        </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- PRISER & STØRRELSER -->
-<section class="ss-section">
+<!-- GULVET + HELE LANDET -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Størrelser & priser</p>
-    <h2 class="ss-section-h fade-up d1">Spare penge — lej hos STC</h2>
-    <div class="ss-intro-body fade-up d1">
-      <p>Her er det hele med. Vi kan lave scener i mange mål, så det passer til dig — og de er helt nye og pæne. Husk STC kommer altid til tiden med scenen. Ikke to events er ens, derfor bliver sin pris skræddersyet efter dine behov og ønsker.</p>
-    </div>
-
-    <div class="ss-sizes fade-up d2">
-      <div class="ss-size-box">
-        <div class="ss-size-num">13,5 × 11 m</div>
-        <div class="ss-size-lbl">Mobilscene</div>
+    <div class="ss-std-grid">
+      <div class="ss-std-card fade-up">
+        <p class="ss-std-card-eyebrow">Fleksibel højde</p>
+        <h3 class="ss-std-card-h">Gulvet</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Hos STC kan du leje en mobilscene, hvor gulvet kan bygges højere end 1 m.</p>
       </div>
-      <div class="ss-size-box">
-        <div class="ss-size-num">8 × 11 m</div>
-        <div class="ss-size-lbl">Mobilscene</div>
+      <div class="ss-std-card fade-up d1">
+        <p class="ss-std-card-eyebrow">Landsdækkende</p>
+        <h3 class="ss-std-card-h">Hele landet</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Vi kommer rundt i hele Danmark. Transport er inkluderet — du betaler ikke for kørsel frem og tilbage.</p>
       </div>
-      <div class="ss-size-box">
-        <div class="ss-size-num">13,5 × 6 m</div>
-        <div class="ss-size-lbl">Mobilscene</div>
-      </div>
-      <div class="ss-size-box">
-        <div class="ss-size-num">8 × 6 m</div>
-        <div class="ss-size-lbl">Mobilscene</div>
-      </div>
-    </div>
-
-    <div class="ss-intro-body fade-up d2">
-      <p>Bemærk ved bestilling hos STC betaler du IKKE for transport frem og tilbage, og du skal IKKE bruge penge på en byggesag hos kommunen, forsikring og rengøring (Det hele er med og alt leveret til aftalt tid). Scenerne vil være rimelig store til mange forskellige typer arrangementer. Scenegulvet kan justeres fra 0,80 – 1,5 m. Højde fra scenegulv op til taget er der ca. 4 m. Belastning af taget til lysudstyr er op til 1,2 tons — tungere udstyr er muligt.</p>
-    </div>
-
-    <div class="ss-highlight fade-up d2">
-      HUSK HOS STC KAN LYSET OG EVT. HØJTALER KØRE MED OP I TAGET.
-    </div>
-
-    <div class="ss-intro-body fade-up d2" style="margin-top:20px;">
-      <p>STC nye smarte små mobil scener på 3 m² 5×6×4 m, 20 m² 5×4×4 m. Rigtig gode til små events hvor der ikke er så meget plads.</p>
-      <p>STC's nye lille smarte mobilscene på 30 m² 5 × 6 × 4 m. Rigtig god til børneunderholdning — solistoptræden — små bands. Det tager 50 min. at stille op og 30 min. at tage ned.</p>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="ss-section">
+<!-- TILBEHØR -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Det hele er inkluderet</p>
-    <h2 class="ss-section-h fade-up d1">Hvad får du med</h2>
-    <div class="ss-feature-grid">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Ekstraudstyr</p>
+      <h2 class="ss-std-intro-h">Tilbehør</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Alt til dit arrangement</p>
+      <h3 class="ss-std-card-h">Tilbehør</h3>
+      <p class="ss-std-card-desc">Få evt. et tilbud på lys og lyd. Fås med stort tilbehørsprogram. I kan leje meget ekstra tilbehør, hvis I har brug for det.</p>
 
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Gulvet</div>
-        <div class="ss-feature-body">Hos STC kan du leje en mobilscene hvor gulvet kan bygges højere end 1 m.</div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Ekstraudstyr</div>
+        <ul class="ss-std-feat-list">
+          <li>Gorillahegn</li>
+          <li>Rullepodier</li>
+          <li>Miksertelte</li>
+          <li>Ramper</li>
+          <li>Generator</li>
+        </ul>
       </div>
-
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Hele landet</div>
-        <div class="ss-feature-body">Vi kommer rundt i hele Danmark. Transport er inkluderet i prisen — du betaler ikke for kørsel frem og tilbage.</div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Udvidelsesmuligheder</div>
+        <ul class="ss-std-feat-list">
+          <li>Scenerne kan lejes med ekstra bagscene og is-huse, så mobilscenen passer til jeres event</li>
+          <li>Vores nye mobilscener kan også bruges til anderledes messestande, VIP-områder og bar-områder</li>
+          <li>Mobil scene kan leveres med PA-vinger og kan mod tillæg udvides med ekstra backstage og sidefaciliteter</li>
+          <li>STC mobilscener kan leveres med hvidt PVC net — passer rigtigt godt til eksklusive arrangementer</li>
+        </ul>
       </div>
-
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Tilbehør</div>
-        <div class="ss-feature-body">Få evt. et tilbud på lys og lyd. Fås med stort tilbehørsprogram. I kan leje meget ekstra tilbehør efter behov: gorillahegn, rullepodier, miksertelte, ramper. Scenerne kan lejes med ekstra bagscene og is-huse. Vores nye mobilscener kan også bruges til anderledes messestande, VIP-områder og bar-områder. Mobil scene kan leveres med PA-vinger og kan mod tillæg udvides med ekstra backstage og side faciliteter. STC mobilscener kan leveres med hvidt PVC net — passer rigtigt godt til eksklusive arrangementer.</div>
+      <div class="ss-std-card-footer">
+        <p>Prøv STC: I kan altid få et godt tilbud på mobilscene der passer jer.</p>
+        <p>Husk: hos STC kan du få sidtelte og backstage telt — det kan være en rigtig stor fordel, hvis der er flere bands der skal spille på scenen. Lad STC hjælpe dig, så du får den helt rigtige løsning til jeres event.</p>
       </div>
-
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Igen og igen</div>
-        <div class="ss-feature-body">STC har leveret scener til over 1000 koncerter over hele landet. Vores kunder vælger os igen og igen. Vi tror det er fordi, vi i STC altid er klar med gode råd og vejledning fra start til slut, og vores kunder kan trække på over 40 års erfaring ved store og små events. STC er et af de ældste scenefirmaer i Danmark — og det bliver man ikke uden mange tilfredse kunder.</div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<!-- GODE RÅD -->
-<section class="ss-section">
+<!-- IGEN OG IGEN + GODE RÅD -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Rådgivning</p>
-    <h2 class="ss-section-h fade-up d1">Gode råd og vejledning</h2>
-    <div class="ss-intro-body fade-up d1">
-      <p>Gode råd og vejledning følger med når du lejer mobilscener hos STC — det er ikke ALTID den billigste pris, som er den billigste løsning. Tænk over det.</p>
-      <p>Prøv STC: I kan altid få et godt tilbud på mobilscene der passer jer. HUSK hos STC kan du få sidtelte og back stage telt — det kan være en rigtig stor fordel, hvis der er flere bands der skal spille på scenen. Lad STC hjælpe dig, så du får den helt rigtige løsning til jeres event. Det er vigtigt at I får den rigtige størrelse på scene. Lad STC rådgive jer til en god løsning.</p>
+    <div class="ss-std-grid">
+      <div class="ss-std-card fade-up">
+        <p class="ss-std-card-eyebrow">Erfaring og tillid</p>
+        <h3 class="ss-std-card-h">Igen og igen</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">STC har leveret scener til over 1000 koncerter over hele landet. Vores kunder vælger os igen og igen. Vi tror det er fordi, vi i STC altid er klar med gode råd og vejledning fra start til slut, og vores kunder kan trække på over 30 års erfaring ved store og små events.</p>
+        <div class="ss-std-card-footer">
+          <p>STC er et af de ældste scenefirmaer i Danmark — og det bliver man ikke uden mange tilfredse kunder. Nu helt nye mobilscener fra STC med certifikat fra Teknologisk Institut.</p>
+        </div>
+      </div>
+      <div class="ss-std-card fade-up d1">
+        <p class="ss-std-card-eyebrow">Rådgivning inkluderet</p>
+        <h3 class="ss-std-card-h">Gode råd og vejledning</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Gode råd og vejledning følger med, når du lejer mobilscener hos STC — det er ikke altid den billigste pris, som er den billigste løsning. Tænk over det.</p>
+      </div>
     </div>
   </div>
 </section>

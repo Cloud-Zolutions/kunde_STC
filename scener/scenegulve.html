@@ -10,45 +10,35 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <style>
-    .ss-intro { padding: 80px 0 64px; }
-    .ss-intro-body { max-width: 720px; }
-    .ss-intro-body p { font-size: 16px; color: var(--text-2); line-height: 1.8; margin-top: 14px; }
-    .ss-intro-body p:first-child { margin-top: 0; }
+    .ss-std { padding: 72px 0 64px; border-top: 1px solid var(--border); }
+    .ss-std-intro { margin-bottom: 48px; }
+    .ss-std-intro-lead { font-size: 14px; font-weight: 600; letter-spacing: 0.06em; color: var(--text-3); text-transform: uppercase; margin-bottom: 6px; }
+    .ss-std-intro-h { font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.025em; }
+    .ss-std-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+    .ss-std-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 36px 32px; }
+    .ss-std-card-eyebrow { display: none; }
+    .ss-std-card-h { font-size: clamp(18px, 2vw, 22px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .ss-std-card-desc { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .ss-std-feat { margin-bottom: 20px; }
+    .ss-std-feat:last-of-type { margin-bottom: 0; }
+    .ss-std-feat-title { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 8px; }
+    .ss-std-feat-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .ss-std-feat-list li { font-size: 13px; color: var(--text-2); line-height: 1.65; padding-left: 14px; position: relative; }
+    .ss-std-feat-list li::before { content: '—'; position: absolute; left: 0; color: var(--blue-light); font-size: 11px; top: 3px; }
+    .ss-std-card-footer { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap; gap: 12px; }
+    .ss-std-card-footer p { font-size: 13px; color: var(--text-2); line-height: 1.75; width: 100%; }
 
-    .ss-section { padding: 64px 0; border-top: 1px solid var(--border); }
-    .ss-section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 8px; }
-    .ss-section-h { font-size: clamp(20px, 2.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
-
-    /* stat strip */
-    .ss-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-    .ss-stat { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 20px; text-align: center; }
-    .ss-stat-num { font-size: 26px; font-weight: 900; letter-spacing: -0.03em; }
-    .ss-stat-lbl { font-size: 12px; color: var(--text-3); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.08em; }
-
-    /* highlight */
-    .ss-highlight { background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.2); border-radius: var(--r); padding: 18px 22px; margin-top: 20px; font-size: 14px; font-weight: 600; color: var(--blue-light); line-height: 1.6; }
-
-    /* feature grid */
-    .ss-feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 40px; }
-    .ss-feature { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; }
-    .ss-feature-title { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-    .ss-feature-body { font-size: 14px; color: var(--text-2); line-height: 1.75; }
-
-    /* opsætning block */
-    .ss-setup { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 32px 28px; margin-top: 40px; }
-    .ss-setup h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; }
-    .ss-setup p { font-size: 14px; color: var(--text-2); line-height: 1.8; margin-top: 12px; }
-    .ss-setup p:first-of-type { margin-top: 0; }
+    /* gallery */
+    .ss-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+    .ss-gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: var(--r); }
+    .ss-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .ss-gallery-item:hover img { transform: scale(1.04); }
 
     @media (max-width: 900px) {
-      .ss-stats { grid-template-columns: repeat(3, 1fr); }
-      .ss-feature-grid { grid-template-columns: 1fr; }
+      .ss-std-grid { grid-template-columns: 1fr; }
+      .ss-gallery { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 600px) {
-      .ss-intro { padding: 56px 0 48px; }
-      .ss-section { padding: 48px 0; }
-      .ss-stats { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 600px) { .ss-std { padding: 48px 0; } }
   </style>
 </head>
 <body>
@@ -112,105 +102,141 @@
 </div>
 
 <!-- INTRO -->
-<section class="ss-intro">
+<section class="ss-std" style="border-top:none;">
   <div class="container">
-    <div class="ss-intro-body fade-up">
-      <p>STC udlejer scenegulv med og uden overdækning. Højden kan justeres fra 35 cm til 2 m. Vi råder over i alt 700 kvm scenegulv. Lej scenegulv hos STC.</p>
-      <p>Spar penge når du skal leje scenegulv — prøv STC for et godt tilbud. 40 63 42 24 — STC kommer over hele landet. STC har alt hvad du skal bruge.</p>
-      <p>Du kan altid få et tilbud, hvor I selv henter her hos STC — fortæl os hvor meget du skal bruge, og vi finder en fornuftig pris. STC opbygger små og store catwalk til modeshow og messer. Catwalk der kan udføres i mange forskellige udformninger og størrelser. STC lejer runde scener ud — også halvrunde scener og scener i andre udformninger. STC kan lave Catwalk på 400 m i gågade til sommer event. Ring til STC 40 63 42 24 næste gang du skal have modeshow.</p>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Lej hos STC</p>
+      <h2 class="ss-std-intro-h">Scenegulve & podier</h2>
+    </div>
+    <div style="max-width:760px;" class="fade-up d1">
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC udlejer scenegulv med og uden overdækning. Højden kan justeres fra 35 cm til 2 m. Vi råder over i alt 700 kvm scenegulv. Lej scenegulv hos STC.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Spar penge når du skal leje scenegulv — prøv STC for et godt tilbud. <strong>40 63 42 24</strong> — STC kommer over hele landet. STC har alt hvad du skal bruge.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Du kan altid få et tilbud, hvor I selv henter her hos STC — fortæl os hvor meget du skal bruge, og vi finder en fornuftig pris.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC opbygger små og store catwalk til modeshow og messer. Catwalk der kan udføres i mange forskellige udformninger og størrelser. STC lejer runde scener ud — også halvrunde scener og scener i andre udformninger.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC kan lave Catwalk på 400 m i gågade til sommerevent.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;">Ring til STC <strong>40 63 42 24</strong> næste gang du skal have modeshow.</p>
     </div>
 
-    <div class="ss-highlight fade-up d1">
-      TILBUD på scenegulv du selv henter: gulv på 7,20 × 4,80 kr. 3.000 + moms — gælder kun for det mål her.
-    </div>
-
-    <div class="ss-stats fade-up d2">
-      <div class="ss-stat">
-        <div class="ss-stat-num">700 m²</div>
-        <div class="ss-stat-lbl">Scenegulv på lager</div>
+    <div class="ss-gallery" style="margin-top:48px;">
+      <div class="ss-gallery-item fade-up">
+        <img src="../assets/images/scenegulve_og_podier/udlejning-scenegulv-1-1920w.webp" alt="STC scenegulv udlejning">
       </div>
-      <div class="ss-stat">
-        <div class="ss-stat-num">35 cm–2 m</div>
-        <div class="ss-stat-lbl">Justerbar højde</div>
+      <div class="ss-gallery-item fade-up d1">
+        <img src="../assets/images/scenegulve_og_podier/udlejning-scenegulv-1-tribune-1920w.webp" alt="STC tribune udlejning">
       </div>
-      <div class="ss-stat">
-        <div class="ss-stat-num">Hele DK</div>
-        <div class="ss-stat-lbl">Vi leverer overalt</div>
+      <div class="ss-gallery-item fade-up d2">
+        <img src="../assets/images/scenegulve_og_podier/udlejning-scenegulv-3-1920w.webp" alt="STC scenegulv til event">
+      </div>
+      <div class="ss-gallery-item fade-up d3">
+        <img src="../assets/images/scenegulve_og_podier/scene+gulver+udlejning+stc-e5dade2b-1920w.webp" alt="STC scene og gulve udlejning">
       </div>
     </div>
   </div>
 </section>
 
-<!-- OPSÆTNING -->
-<section class="ss-section">
+<!-- TRIBUNER -->
+<section class="ss-std" style="border-top:none;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Teknisk information</p>
-    <h2 class="ss-section-h fade-up d1">Opsætning & Scenepodier</h2>
-    <div class="ss-setup fade-up d1">
-      <h3>Sådan opbygges scenegulvet</h3>
-      <p>Scenegulvet opbygges nemt og bekvemt med almindelige stilladsben, hvorpå der monteres hjørner, gitterrammer og tværlægter — alt er let, uden brug af skruer og møtrikker. Gulvpladerne er tilpasset og ligger skridsikkert i formaterne 1,2 × 1,2 m eller 1,2 × 2,4 m samt 2,40 × 2,40 m.</p>
-      <p>Scenegulvet kan evt. leveres med stof i forskellige farver til inddækning af forkant. Ligesom der kan leveres forskellige former for gulvtæppe. Da vi bruger den samme type stilladsben som i byggebranchen, kan det lade sig gøre at bygge et plant scenegulv selv på skrånende terræn. Scenegulvet kan anvendes steder hvor det er nødvendigt at indbygge scenen i stolerækker — en fordel ved pladsmangel.</p>
-      <p>En enhed på 2,4 × 2,4 m er velegnet til brug som podie til opstilling af højtalere, projektorer, følgespot eller andet teknisk udstyr. Podiet kan også bruges til udstillinger. Ben kan justeres fra 35 cm til 2 m. Med vores podier kan vi lave mange spændende opsætninger — bl.a. til kor og kirkekoncerter.</p>
-      <p>Vi stiller gerne vores ekspertise til rådighed med anskaffelse af andet udstyr til brug i forbindelse med scener. Hvis det ønskes kan vi også give tilbud på scene, lys og lyd som totalproduktion. Ring og hør nærmere 40 63 42 24. Der gives rabat på alle vore produkter, hvor udlejning finder sted over flere dage eller i en længere periode.</p>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Læs om vores</p>
+      <h2 class="ss-std-intro-h">Tribuner</h2>
     </div>
-    <div class="ss-intro-body fade-up d2" style="margin-top:20px;">
-      <p>Køb dine nye scenepodier hos STC 40 63 42 24 — vi har arbejdet med det her i over 40 år og ved, hvor vigtigt det er at du får lige netop det du har brug for.</p>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <h3 class="ss-std-card-h">Tribuner</h3>
+      <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">STC udlejer tribuner af forskellig størrelse — også mobile tribuner. Ring og få et tilbud fra STC <strong>40 63 42 24</strong>.</p>
     </div>
   </div>
 </section>
 
-<!-- PRISER -->
-<section class="ss-section">
+<!-- PRIS PR. DØGN -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Priser</p>
-    <h2 class="ss-section-h fade-up d1">Pris pr. døgn</h2>
-    <div class="ss-intro-body fade-up d1">
-      <p>Prisen pr. døgn kan variere. Det kommer lidt an på hvilket tilbehør du skal bruge, hvor du skal bruge det og hvor meget arbejde, der er i at sætte det op og tage det ned. Få et godt tilbud fra STC, hvor vi kommer med det og laver det hele for dig. Husk vi kan lave det i mange mål.</p>
-      <p>Ved levering med opsætning er lejeprisen pr. podie: kr. 75,– til kr. 150,– afhængigt af forhold. Ring og få et godt tilbud der passer til jer. Mange vil gerne spare penge — det kan DU også gøre, hvis du selv vil hjælpe til eller afhente her hos STC. Skal du bruge det i flere døgn, finder vi et godt tilbud.</p>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Fair priser</p>
+      <h2 class="ss-std-intro-h">Pris pr. døgn</h2>
     </div>
-    <div class="ss-highlight fade-up d2">
-      Mangler du arbejdskraft: 275 kr. + moms pr. time — gælder også aften og nat.
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <h3 class="ss-std-card-h">Pris pr. døgn</h3>
+      <p class="ss-std-card-desc">Prisen pr. døgn kan variere.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Det kommer lidt an på hvilket tilbehør du skal bruge, hvor du skal bruge det og hvor meget arbejde, der er i at sætte det op og tage det ned.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Få et godt tilbud fra STC, hvor vi kommer med det og laver det hele for dig. Husk vi kan lave det i mange mål.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Ring og få et godt tilbud der passer til jer. Mange vil gerne spare penge, og det kan du også gøre, hvis du selv vil hjælpe til eller afhente her hos STC.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Skal du bruge det i flere døgn, finder vi et godt tilbud. Du kan vælge at lade os lave det hele for dig, eller du kan spare penge ved selv at hjælpe til.</p>
     </div>
   </div>
 </section>
 
-<!-- FEATURES -->
-<section class="ss-section">
+<!-- SCENEPODIER -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Hvad vi tilbyder</p>
-    <h2 class="ss-section-h fade-up d1">Løsninger til alle events</h2>
-    <div class="ss-feature-grid">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Køb eller lej</p>
+      <h2 class="ss-std-intro-h">Scenepodier</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <h3 class="ss-std-card-h">Scenepodier</h3>
+      <p class="ss-std-card-desc">Køb eller lej dine nye scenepodier hos STC <strong>40 63 42 24</strong> — vi har arbejdet med det her i over 30 år og ved, hvor vigtigt det er at du får lige netop det du har brug for.</p>
 
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Indendørs scenegulv</div>
-        <div class="ss-feature-body">Mange vil gerne spare penge, og det kan DU også gøre, hvis du selv vil hjælpe til eller afhente her hos STC. Vi giver meget gerne et godt tilbud på scenegulv og kan lave mange forskellige løsninger. Du kan vælge at lade os lave det hele for dig, eller spare penge ved selv at hjælpe til. Husk vi også har alt i lyd og lys og AV-løsninger. Scenegulvet kan evt. leveres med stof i forskellige farver og gulvtæppe.</div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Opsætning</div>
+        <ul class="ss-std-feat-list">
+          <li>Scenegulvet opbygges nemt og bekvemt med almindelige stilladsben, hvorpå der monteres hjørner, gitterrammer og tværlægter — alt er let, uden brug af skruer og møtrikker</li>
+          <li>Gulvpladerne er tilpasset og ligger skridsikkert i formaterne 1,2 × 1,2 m eller 1,2 × 2,4 m samt 2,40 × 2,40 m</li>
+          <li>Scenegulvet kan evt. leveres med stof i forskellige farver til inddækning af forkant — ligesom der kan leveres forskellige former for gulvtæppe</li>
+          <li>Da vi bruger den samme type stilladsben som i byggebranchen, kan vi bygge et plant scenegulv selv på skrånende terræn</li>
+          <li>Scenegulvet kan anvendes steder, hvor det er nødvendigt at indbygge scenen i stolerækker — en fordel ved pladsmangel</li>
+          <li>En enhed på 2,4 × 2,4 m er velegnet som podie til opstilling af højtalere, projektorer, følgespot eller andet teknisk udstyr</li>
+          <li>Podiet kan også bruges til udstillinger — ben kan justeres fra 35 cm til 2 m</li>
+          <li>Med vores podier kan vi lave mange spændende opsætninger, bl.a. til kor og kirkekoncerter</li>
+        </ul>
       </div>
 
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Udendørs scenegulv</div>
-        <div class="ss-feature-body">Scenegulvet specialbygges til netop dit arrangement. Vi har erfaring med udendørs opsætninger i alle vejrforhold og sørger for, at gulvet sidder stabilt og sikkert uanset terræn.</div>
+      <div class="ss-std-card-footer">
+        <p>Vi stiller gerne vores ekspertise til rådighed med anskaffelse af andet udstyr til brug i forbindelse med scener. Hvis det ønskes kan vi også give tilbud på scene, lys og lyd som totalproduktion.</p>
+        <p>Ring og hør nærmere <strong>40 63 42 24</strong>. Der gives rabat på alle vore produkter, hvor udlejning finder sted over flere dage eller i en længere periode.</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Tribuner</div>
-        <div class="ss-feature-body">STC udlejer tribuner af forskellig størrelse — også mobile tribuner. Ring og få et tilbud fra STC 40 63 42 24.</div>
+<!-- INDENDØRS + UDENDØRS -->
+<section class="ss-std" style="padding-top:48px;">
+  <div class="container">
+    <div class="ss-std-grid">
+      <div class="ss-std-card fade-up">
+        <h3 class="ss-std-card-h">Indendørs scenegulv</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:16px;">Mange vil gerne spare penge, og det kan du også gøre, hvis du selv vil hjælpe til eller afhenter her hos STC.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Vi giver meget gerne et godt tilbud på scenegulv og kan lave mange forskellige løsninger — lad os tage en snak om det.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Skal du bruge det i flere døgn, finder vi et godt tilbud. Du kan vælge at lade os lave det hele for dig, eller spare penge ved selv at hjælpe til.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Husk vi også har alt i lyd, lys og AV-løsninger. Scenegulvet kan evt. leveres med stof i forskellige farver til inddækning af forkant — ligesom der kan leveres forskellige former for gulvtæppe.</p>
       </div>
-
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Catwalk</div>
-        <div class="ss-feature-body">Vi er leveringsdygtige i catwalk til alle former for events. STC kan lave catwalk på 400 m i gågade til sommer event. Ring for at høre hvad vi kan tilbyde til netop din event eller dit modeshow.</div>
+      <div class="ss-std-card fade-up d1">
+        <h3 class="ss-std-card-h">Udendørs og indendørs scenegulv</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:16px;">Mange vil gerne spare penge, og det kan du også gøre, hvis du selv vil hjælpe til eller afhenter her hos STC.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Vi giver meget gerne et godt tilbud på scenegulv og kan lave mange forskellige løsninger — lad os tage en snak om det.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Skal du bruge det i flere døgn, finder vi et godt tilbud. Du kan vælge at lade os lave det hele for dig, eller spare penge ved selv at hjælpe til.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Husk vi også har alt i lyd, lys og AV-løsninger. Scenegulvet kan evt. leveres med stof i forskellige farver til inddækning af forkant — ligesom der kan leveres forskellige former for gulvtæppe.</p>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Gulvtæpper</div>
-        <div class="ss-feature-body">Gulvtæpper i forskellige farver mod merpris lægges på. Scenegulvet kan leveres med stof i forskellige farver til inddækning af forkant.</div>
+<!-- CATWALK + GULVTÆPPER + UDSTILLING -->
+<section class="ss-std" style="padding-top:48px;">
+  <div class="container">
+    <div class="ss-std-grid">
+      <div class="ss-std-card fade-up">
+        <h3 class="ss-std-card-h">Catwalk</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Vi er leveringsdygtige i catwalk til alle former for events. Ring for at høre hvad vi kan tilbyde til netop din event eller dit modeshow.</p>
       </div>
-
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Udstilling</div>
-        <div class="ss-feature-body">Vi er dig behjælpelig med alle former for udstillinger — både på messer, julearrangementer, firmafester og konferencer. Vi leverer totalløsninger som f.eks. også indeholder multimedialøsninger.</div>
+      <div class="ss-std-card fade-up d1">
+        <h3 class="ss-std-card-h">Gulvtæpper</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Gulvtæpper i forskellige farver mod merpris lægges på.</p>
       </div>
-
+    </div>
+    <div class="ss-std-card fade-up" style="margin-top:24px;">
+      <h3 class="ss-std-card-h">Udstilling</h3>
+      <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Vi er dig behjælpelig med alle former for udstillinger — både på messer, julearrangementer, firmafester og konferencer. Vi leverer totalløsninger som f.eks. også indeholder multimedialøsninger.</p>
     </div>
   </div>
 </section>
