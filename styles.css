@@ -110,6 +110,13 @@ img { display: block; max-width: 100%; }
 .offer-more { font-size: 13px; font-weight: 600; color: var(--blue-light); }
 
 /* Price CTA */
+.refs-section { background: var(--bg); padding: 80px 0; }
+.refs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.refs-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-2); transition: border-color .2s, color .2s; }
+.refs-item:hover { border-color: rgba(59,130,246,0.4); color: var(--text); }
+@media (max-width: 700px) { .refs-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 460px) { .refs-grid { grid-template-columns: 1fr; } }
+
 .price-cta { background: var(--bg-2); padding: 100px 0; text-align: center; }
 .price-cta-h { font-size: clamp(28px, 4vw, 52px); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 20px; }
 .price-cta-p { font-size: 17px; color: var(--text-2); max-width: 560px; margin: 0 auto 14px; line-height: 1.7; }
