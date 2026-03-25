@@ -10,39 +10,28 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles.css">
   <style>
-    .ss-intro { padding: 80px 0 64px; }
-    .ss-intro-body { max-width: 720px; }
-    .ss-intro-body p { font-size: 16px; color: var(--text-2); line-height: 1.8; margin-top: 14px; }
-    .ss-intro-body p:first-child { margin-top: 0; }
+    .ss-std { padding: 72px 0 64px; border-top: 1px solid var(--border); }
+    .ss-std-intro { margin-bottom: 48px; }
+    .ss-std-intro-lead { font-size: 14px; font-weight: 600; letter-spacing: 0.06em; color: var(--text-3); text-transform: uppercase; margin-bottom: 6px; }
+    .ss-std-intro-h { font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.025em; }
+    .ss-std-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+    .ss-std-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 36px 32px; display: flex; flex-direction: column; }
+    .ss-std-card-eyebrow { display: none; }
+    .ss-std-card-h { font-size: clamp(18px, 2vw, 22px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .ss-std-card-price { font-size: 20px; font-weight: 800; letter-spacing: -0.02em; margin-top: auto; padding-top: 20px; border-top: 1px solid var(--border); }
+    .ss-std-card-price span { font-size: 13px; font-weight: 400; color: var(--text-3); }
 
-    .ss-section { padding: 64px 0; border-top: 1px solid var(--border); }
-    .ss-section-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 8px; }
-    .ss-section-h { font-size: clamp(20px, 2.4vw, 28px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 20px; }
-
-    /* packages */
-    .ss-packages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-    .ss-pkg { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; display: flex; flex-direction: column; }
-    .ss-pkg-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 10px; }
-    .ss-pkg-title { font-size: 22px; font-weight: 900; letter-spacing: -0.03em; margin-bottom: 4px; }
-    .ss-pkg-size { font-size: 13px; color: var(--text-3); margin-bottom: 16px; }
-    .ss-pkg-body { font-size: 14px; color: var(--text-2); line-height: 1.75; flex: 1; }
-    .ss-pkg-price { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--border); font-size: 20px; font-weight: 800; letter-spacing: -0.02em; }
-    .ss-pkg-price span { font-size: 13px; font-weight: 400; color: var(--text-3); }
-
-    /* features */
-    .ss-feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
-    .ss-feature { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 20px; }
-    .ss-feature-title { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-    .ss-feature-body { font-size: 14px; color: var(--text-2); line-height: 1.75; }
+    /* gallery */
+    .ss-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 32px; }
+    .ss-gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: var(--r); }
+    .ss-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .ss-gallery-item:hover img { transform: scale(1.04); }
 
     @media (max-width: 900px) {
-      .ss-packages { grid-template-columns: 1fr; }
-      .ss-feature-grid { grid-template-columns: 1fr; }
+      .ss-std-grid { grid-template-columns: 1fr; }
+      .ss-gallery { grid-template-columns: 1fr; }
     }
-    @media (max-width: 600px) {
-      .ss-intro { padding: 56px 0 48px; }
-      .ss-section { padding: 48px 0; }
-    }
+    @media (max-width: 600px) { .ss-std { padding: 48px 0; } }
   </style>
 </head>
 <body>
@@ -106,74 +95,82 @@
 </div>
 
 <!-- INTRO -->
-<section class="ss-intro">
+<section class="ss-std" style="border-top:none;">
   <div class="container">
-    <div class="ss-intro-body fade-up">
-      <p>STC har også små scener med i udlejnings-programmet. Scenerne er fleksible og særligt egnede til markeder, center-, torv- og gadefest hvor mobilscener ikke kan bruges. Kort sagt scener til mellem og små events. Alle scener er med scenegulv.</p>
-      <p>Alle priser på scener er ekskl. moms. Alle vores scener leveres med nye brandgodkendte presenninger. Nedenstående 3 nævnte eksempler er standardmål. Skulle I imidlertid være interesseret i andre størrelser og/eller udformninger, vil det med vores udstyr være muligt at sammensætte specielle scener. Ring og hør nærmere.</p>
-      <p>Vi er behjælpelige med anskaffelse af andet tilbehør: gorillahegn, mobile toiletter og generatorer mv. Hvis det ønskes kan vi også give tilbud på scene, lys og lyd som totalproduktion. Ring og hør nærmere 40 63 42 24. Der gives rabat på alle vore produkter, hvor udlejning finder sted over flere dage. Prøv STC næste gang — det betaler sig.</p>
+    <div style="max-width:760px;" class="fade-up">
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC har også små scener med i udlejnings-programmet. Scenerne er også her fleksible og særligt egnede til:</p>
+      <ul style="list-style:none;margin-bottom:16px;display:flex;flex-direction:column;gap:6px;">
+        <li style="font-size:16px;color:var(--text-2);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue-light);">—</span>Markeder</li>
+        <li style="font-size:16px;color:var(--text-2);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue-light);">—</span>Center</li>
+        <li style="font-size:16px;color:var(--text-2);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue-light);">—</span>Torv</li>
+        <li style="font-size:16px;color:var(--text-2);padding-left:16px;position:relative;"><span style="position:absolute;left:0;color:var(--blue-light);">—</span>Gadefest</li>
+      </ul>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">— hvor mobilscener ikke kan bruges. Kort sagt scener til mellem og små events. Alle scener er med scenegulv.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Alle priser på scener er ekskl. moms. Alle vores scener leveres med nye brandgodkendte presenninger. Nedenstående 3 nævnte eksempler er standardmål. Skulle I imidlertid være interesseret i andre størrelser og/eller udformninger, vil det med vores udstyr være muligt at sammensætte specielle scener. Ring og hør nærmere.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Vi er behjælpelige med anskaffelse af andet tilbehør: gorillahegn, mobile toiletter og generatorer mv. Hvis det ønskes kan vi også give tilbud på scene, lys og lyd som totalproduktion.</p>
+      <p style="font-size:16px;color:var(--text-2);line-height:1.8;">Ring og hør nærmere <strong>40 63 42 24</strong>. Der gives rabat på alle vore produkter, hvor udlejning finder sted over flere dage. Prøv STC næste gang — det betaler sig.</p>
     </div>
   </div>
 </section>
 
-<!-- PAKKER -->
-<section class="ss-section">
+<!-- SMÅ SCENER + GALLERI -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Standardtilbud</p>
-    <h2 class="ss-section-h fade-up d1">Vælg din scenestørrelse</h2>
-    <div class="ss-packages">
-
-      <div class="ss-pkg fade-up">
-        <p class="ss-pkg-tag">Scene tilbud 1</p>
-        <div class="ss-pkg-title">6 × 6 m</div>
-        <div class="ss-pkg-size">Scenegulv inkluderet</div>
-        <p class="ss-pkg-body">Scenen bliver håndbygget, så den er god hvor det er svært at komme til. En god scene hvor det vigtigste er at stå og spille, uden det store behov for tungt teknisk udstyr. Scenegulvet kan justeres i højden fra 70 cm til 1,5 m. Arrangøren skal udover det aftalte beløb stille 4 frivillige medhjælpere til rådighed, ved opsætning og nedtagning.</p>
-        <div class="ss-pkg-price">kr. 9.000,– <span>pr. døgn ekskl. moms</span></div>
+    <div class="ss-std-intro fade-up">
+      <h2 class="ss-std-intro-h">Små Scener</h2>
+    </div>
+    <div class="ss-gallery fade-up d1">
+      <div class="ss-gallery-item">
+        <img src="../assets/images/smaa_scener/STC-Scene-Udlejning-20-1920w.webp" alt="STC lille scene udlejning">
       </div>
-
-      <div class="ss-pkg fade-up d1">
-        <p class="ss-pkg-tag">Scene tilbud 2</p>
-        <div class="ss-pkg-title">6 × 3 m</div>
-        <div class="ss-pkg-size">Scenegulv inkluderet</div>
-        <p class="ss-pkg-body">En lille, hurtig og handy scene når der skal være "fest i gaden". Scenegulvet kan også her justeres i højden 70 cm til 1,5 m. Arrangøren skal udover det aftalte beløb stille 4 frivillige medhjælpere til rådighed, ved opsætning og nedtagning.</p>
-        <div class="ss-pkg-price">kr. 7.500,– <span>pr. døgn ekskl. moms</span></div>
+      <div class="ss-gallery-item">
+        <img src="../assets/images/smaa_scener/STC-Scene-Udlejning-21-1920w.webp" alt="STC scene til gadefest">
       </div>
-
-      <div class="ss-pkg fade-up d2">
-        <p class="ss-pkg-tag">Scene tilbud 3</p>
-        <div class="ss-pkg-title">3 × 3 m</div>
-        <div class="ss-pkg-size">Scenegulv inkluderet</div>
-        <p class="ss-pkg-body">Dette er den mindste scene vi laver i vores standardtilbud. Den er velegnet til solist, børneunderholdning, m.v. Scenegulvet kan justeres fra 70 cm til 1,5 m.</p>
-        <div class="ss-pkg-price">kr. 5.600,– <span>pr. døgn ekskl. moms</span></div>
+      <div class="ss-gallery-item">
+        <img src="../assets/images/smaa_scener/STC-Scene-Udlejning-23-1920w.webp" alt="STC scene til event">
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- TILBEHØR -->
-<section class="ss-section">
+<!-- SCENE TILBUD HEADING -->
+<section class="ss-std" style="padding-top:48px;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Ekstra muligheder</p>
-    <h2 class="ss-section-h fade-up d1">Tilbehør & tilvalg</h2>
-    <div class="ss-feature-grid">
-
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Udendørs scenegulv</div>
-        <div class="ss-feature-body">Dette er et eksempel på udendørs scenegulv, men scenegulvet specialbygges til netop dit arrangement.</div>
-      </div>
-
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Catwalk</div>
-        <div class="ss-feature-body">Vi er leveringsdygtige i catwalk til alle former for events. Ring for at høre hvad vi kan tilbyde til netop din event eller dit modeshow.</div>
-      </div>
-
-      <div class="ss-feature fade-up d2">
-        <div class="ss-feature-title">Gulvtæpper</div>
-        <div class="ss-feature-body">Gulvtæpper i forskellige farver mod merpris lægges på.</div>
-      </div>
-
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Læs om vores</p>
+      <h2 class="ss-std-intro-h">Scene tilbud</h2>
     </div>
+
+    <!-- Tilbud 1 + 2: 2 kolonner -->
+    <div class="ss-std-grid fade-up d1">
+      <div class="ss-std-card">
+        <h3 class="ss-std-card-h">Scene tilbud 1: 6 × 6 meter</h3>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Scenen bliver håndbygget, så den er god hvor det er svært at komme til.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">En god scene hvor det vigtigste er, at stå og spille, uden det store behov for tungt teknisk udstyr.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Scenegulvet kan justeres i højden fra 70 cm til 1,5 m.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:0;flex:1;">Arrangøren skal udover det aftalte beløb stille 4 frivillige medhjælpere til rådighed, ved opsætning og nedtagning.</p>
+        <div class="ss-std-card-price">kr. 9.000,– <span>pr. døgn ekskl. moms</span></div>
+      </div>
+      <div class="ss-std-card">
+        <h3 class="ss-std-card-h">Scene tilbud 2: 6 × 3 meter</h3>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">En lille, hurtig og handy scene når der skal være "fest i gaden".</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Scenegulvet kan også her justeres i højden 70 cm til 1,5 m.</p>
+        <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:0;flex:1;">Arrangøren skal udover det aftalte beløb stille 4 frivillige medhjælpere til rådighed, ved opsætning og nedtagning. Pris pr. døgn fra: kr. 7.500,– 6 × 3 m.</p>
+        <div class="ss-std-card-price">kr. 7.500,– <span>pr. døgn ekskl. moms</span></div>
+      </div>
+    </div>
+
+    <!-- Tilbud 3: fuld bredde -->
+    <div class="ss-std-card fade-up" style="margin-top:24px;">
+      <h3 class="ss-std-card-h">Scene tilbud 3: 3 × 3 meter</h3>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Dette er den mindste scene vi laver i vores standardtilbud. Den er velegnet til solist, børneunderholdning, m.v. Scenegulvet kan justeres fra 70 cm til 1,5 m. Pris pr. døgn fra: kr. 6.600,–</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Dette er et eksempel på udendørs scenegulv, men scenegulvet specialbygges til netop dit arrangement.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Vi er leveringsdygtige i catwalk til alle former for events.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:12px;">Ring for at høre hvad vi kan tilbyde til netop din event/modeshow.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:0;">Gulvtæpper i forskellige farver mod merpris lægges på.</p>
+      <div class="ss-std-card-price">kr. 6.600,– <span>pr. døgn ekskl. moms</span></div>
+    </div>
+
   </div>
 </section>
 
