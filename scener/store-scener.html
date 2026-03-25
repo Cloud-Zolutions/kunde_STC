@@ -42,10 +42,37 @@
     /* references */
     .ss-refs { font-size: 13px; color: var(--text-3); line-height: 1.9; margin-top: 20px; }
 
+    /* gallery */
+    .ss-gallery { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 40px; }
+    .ss-gallery-item { aspect-ratio: 4/3; overflow: hidden; border-radius: var(--r); }
+    .ss-gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s ease; }
+    .ss-gallery-item:hover img { transform: scale(1.04); }
+
+    /* standardpakker */
+    .ss-std { padding: 72px 0 64px; border-top: 1px solid var(--border); }
+    .ss-std-intro { margin-bottom: 48px; }
+    .ss-std-intro-lead { font-size: 14px; font-weight: 600; letter-spacing: 0.06em; color: var(--text-3); text-transform: uppercase; margin-bottom: 6px; }
+    .ss-std-intro-h { font-size: clamp(26px, 3vw, 38px); font-weight: 800; letter-spacing: -0.025em; }
+    .ss-std-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; align-items: start; }
+    .ss-std-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 36px 32px; }
+    .ss-std-card-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--blue-light); margin-bottom: 8px; }
+    .ss-std-card-h { font-size: clamp(18px, 2vw, 22px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 14px; }
+    .ss-std-card-desc { font-size: 15px; color: var(--text-2); line-height: 1.8; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+    .ss-std-feat { margin-bottom: 20px; }
+    .ss-std-feat:last-of-type { margin-bottom: 0; }
+    .ss-std-feat-title { font-size: 13px; font-weight: 700; letter-spacing: 0.02em; margin-bottom: 8px; }
+    .ss-std-feat-list { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+    .ss-std-feat-list li { font-size: 13px; color: var(--text-2); line-height: 1.65; padding-left: 14px; position: relative; }
+    .ss-std-feat-list li::before { content: '—'; position: absolute; left: 0; color: var(--blue-light); font-size: 11px; top: 3px; }
+    .ss-std-card-footer { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--border); display: flex; flex-direction: column; gap: 10px; }
+    .ss-std-card-footer p { font-size: 13px; color: var(--text-2); line-height: 1.75; }
+
     @media (max-width: 900px) {
       .ss-packages { grid-template-columns: 1fr; }
       .ss-feature-grid { grid-template-columns: 1fr; }
       .ss-list { grid-template-columns: 1fr; }
+      .ss-gallery { grid-template-columns: repeat(2, 1fr); }
+      .ss-std-grid { grid-template-columns: 1fr; }
     }
     @media (max-width: 600px) {
       .ss-intro { padding: 56px 0 48px; }
@@ -113,165 +140,357 @@
   </div>
 </div>
 
-<!-- PAKKE 1: 19,6 x 19,6 -->
-<section class="ss-section">
+<!-- INTRO -->
+<section class="ss-intro">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Festivalpakke</p>
-    <h2 class="ss-section-h fade-up d1">19,6 × 19,6 m scene</h2>
-    <div class="ss-intro-body fade-up d2">
-      <p>Dette er vores store festival scene. Her er rigtig god plads. En absolut god og arbejdsvenlig scene til store arrangementer.</p>
-    </div>
-    <div class="ss-feature-grid" style="margin-top:32px;">
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Konstruktion og sikkerhed</div>
-        <div class="ss-feature-body">
-          Alt er i let aluminium – derved undgås tunge løft<br>
-          Alt bliver samlet på jorden<br>
-          Ingen skal op og arbejde i højderne
-        </div>
-      </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Plads og kapacitet</div>
-        <div class="ss-feature-body">
-          Over 380 m² gulv – god plads til opsætning<br>
-          Større load in kan bygges til efter ønske<br>
-          Der er i stigende grad behov for load in plads til større produktioner
-        </div>
-      </div>
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Scene og tekniske specifikationer</div>
-        <div class="ss-feature-body">
-          Scenen leveres med PA-vinger (belastning: 1 ton pr. side)<br>
-          Flyvepunkter for hver 3 meter pr. side
-        </div>
-      </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Medfølgende udstyr</div>
-        <div class="ss-feature-body">
-          4 rulle-podier · 7 × 5 m mixertelt · Gorillahegn · Rampe · 2 trapper<br>
-          Sættevogn kan bruges som ekstra backstage
-        </div>
-      </div>
-    </div>
-    <div class="ss-intro-body fade-up" style="margin-top:24px;">
-      <p>1 uge eller 3–5 dage – få et godt tilbud. Ring på 40 63 42 24 for at høre mere.</p>
-      <p style="margin-top:12px;">Arrangøren skal udover det aftalte beløb stille ca. 10 frivillige medhjælpere til rådighed, ved opsætning og nedtagning. Opsætning ca. 10–12 timer afhængig af forhold. Nedtagning ca. 6–10 timer.</p>
-      <p style="margin-top:12px;">Ved store arrangementer kan vi tilbyde at flyve højtalere op i en højde af 12–16 meter mod merpris.</p>
+    <div class="ss-intro-body">
+      <p>STC Scener er rigtig gode som festival scener, koncertevents og firmafester. Kort sagt scener til store og små events.</p>
+      <p>Hvis det ønskes kan du få tilbud med lys og lyd i en totalløsning. Lej dit sceneudstyr hos STC til rimelige priser. Alle scenerne er godkendte, efter de nye EUROCODES.</p>
+      <p>STC Scener har forskellige størrelser. Scenegulvet kan justeres i højden fra 70 cm op til 2 m.</p>
+      <p>Du kan trygt vælge en STC-Scene. Vi har leveret scener til over 4000 koncerter over hele landet. HUSK STC Scener er gode hvor der ikke er så meget plads eller hvor store tunge køretøjer ikke kan komme ind, vi har lavet rigtig mange speciale scene løsninger, steder hvor det har været svært at komme til.</p>
     </div>
   </div>
 </section>
 
-<!-- PAKKE 2: 10 x 12 -->
-<section class="ss-section">
+<!-- GALLERI -->
+<section class="ss-intro" style="padding-top:0;">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Mellemstor scene</p>
-    <h2 class="ss-section-h fade-up d1">10 × 12 m scene</h2>
-    <div class="ss-intro-body fade-up d2">
-      <p>Dette er en fleksibel scene, der passer til mange typer arrangementer. En solid og arbejdsvenlig løsning med god plads til både optræden og teknik.</p>
-    </div>
-    <div class="ss-feature-grid" style="margin-top:32px;">
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Konstruktion og sikkerhed</div>
-        <div class="ss-feature-body">
-          Alt er i let aluminium – derved undgås tunge løft<br>
-          Alt bliver samlet på jorden<br>
-          Ingen skal op og arbejde i højderne
-        </div>
+    <div class="ss-gallery">
+      <div class="ss-gallery-item fade-up">
+        <img src="../assets/images/scener/store_scener/IMG_8275-1920w.webp" alt="STC stor festivalscene">
       </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Plads og fleksibilitet</div>
-        <div class="ss-feature-body">
-          10 × 12 m scene – velegnet til både mindre og mellemstore arrangementer<br>
-          Scenegulvet kan justeres fra 70 cm til 2 m i højden
-        </div>
+      <div class="ss-gallery-item fade-up d1">
+        <img src="../assets/images/scener/store_scener/STOR-SCENE-BILLEDE-2-1024x768-1024x768-1920w.webp" alt="STC scene til koncertevent">
       </div>
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Anvendelse</div>
-        <div class="ss-feature-body">
-          Ideel til koncerter, firmaevents, byfester og mindre festivaler<br>
-          Giver god plads til både artister og teknisk opsætning
-        </div>
+      <div class="ss-gallery-item fade-up d2">
+        <img src="../assets/images/scener/store_scener/IMG_4588-53a3fba1-1920w.webp" alt="STC sceneopsætning">
       </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Praktisk info</div>
-        <div class="ss-feature-body">
-          Pris pr. døgn: Indhent et godt tilbud<br>
-          Ring og få en snak med Morten Lind på 40 63 42 24<br><br>
-          Arrangøren stiller ca. 8–10 frivillige medhjælpere til rådighed ved opsætning og nedtagning
-        </div>
+      <div class="ss-gallery-item fade-up d3">
+        <img src="../assets/images/scener/store_scener/Rasmus-Seebach-2012-1024x679-1920w.webp" alt="Rasmus Seebach på STC scene">
       </div>
-    </div>
-    <div class="ss-intro-body fade-up" style="margin-top:24px;">
-      <p>STC kan lave scener i mange forskellige mål, alt efter behov.</p>
     </div>
   </div>
 </section>
 
-<!-- PAKKE 3: 15 x 15 -->
-<section class="ss-section">
+<!-- STANDARDPAKKER -->
+<section class="ss-std">
   <div class="container">
-    <p class="ss-section-eyebrow fade-up">Stor festivalscene</p>
-    <h2 class="ss-section-h fade-up d1">15 × 15 – 15 × 12 m scene</h2>
-    <div class="ss-intro-body fade-up d2">
-      <p>Dette er en stor og solid scene, velegnet til større arrangementer og musikfestivaler. En driftssikker løsning med god plads til både artister og teknik.</p>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Læs om vores</p>
+      <h2 class="ss-std-intro-h">Standardpakker</h2>
     </div>
-    <div class="ss-feature-grid" style="margin-top:32px;">
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Konstruktion og sikkerhed</div>
-        <div class="ss-feature-body">
-          Alt er i let aluminium – derved undgås tunge løft<br>
-          Alt bliver samlet på jorden<br>
-          Ingen skal op og arbejde i højderne
+    <div class="ss-std-grid">
+
+      <!-- Kort 1 -->
+      <div class="ss-std-card fade-up">
+        <p class="ss-std-card-eyebrow">Festivalpakke</p>
+        <h3 class="ss-std-card-h">19,6 × 19,6 m scene</h3>
+        <p class="ss-std-card-desc">Dette er vores store festival scene. Her er rigtig god plads. En absolut god og arbejdsvenlig scene til store arrangementer.</p>
+
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Konstruktion og sikkerhed</div>
+          <ul class="ss-std-feat-list">
+            <li>Alt er i let aluminium – derved undgås tunge løft</li>
+            <li>Alt bliver samlet på jorden</li>
+            <li>Ingen skal op og arbejde i højderne</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Plads og kapacitet</div>
+          <ul class="ss-std-feat-list">
+            <li>Over 380 m² gulv – god plads til opsætning</li>
+            <li>Større load in kan bygges til efter ønske</li>
+            <li>Der er i stigende grad behov for load in plads til større produktioner</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Scene og tekniske specifikationer</div>
+          <ul class="ss-std-feat-list">
+            <li>Scenen leveres med PA-vinger (belastning: 1 ton pr. side)</li>
+            <li>Flyvepunkter for hver 3 meter pr. side</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Medfølgende udstyr</div>
+          <ul class="ss-std-feat-list">
+            <li>4 rulle-podier</li>
+            <li>7 × 5 m mixertelt</li>
+            <li>Gorillahegn</li>
+            <li>Rampe</li>
+            <li>2 trapper</li>
+            <li>Sættevogn kan bruges som ekstra backstage</li>
+          </ul>
+        </div>
+
+        <div class="ss-std-card-footer">
+          <p>1 uge eller 3–5 dage – få et godt tilbud. Ring på <strong>40 63 42 24</strong> for at høre mere.</p>
+          <p>Arrangøren skal udover det aftalte beløb stille ca. 10 frivillige medhjælpere til rådighed, ved opsætning og nedtagning. Opsætning ca. 10–12 timer afhængig af forhold. Nedtagning ca. 6–10 timer.</p>
+          <p>Ved store arrangementer kan vi tilbyde at flyve højtalere op i en højde af 12–16 meter mod merpris.</p>
         </div>
       </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Plads og kapacitet</div>
-        <div class="ss-feature-body">
-          15 × 15 m scene – god plads til større produktioner<br>
-          Velegnet til koncerter, festivaler og større events
+
+      <!-- Kort 2 -->
+      <div class="ss-std-card fade-up d1">
+        <p class="ss-std-card-eyebrow">Mellemstor scene</p>
+        <h3 class="ss-std-card-h">10 × 12 m scene</h3>
+        <p class="ss-std-card-desc">Dette er en fleksibel scene, der passer til mange typer arrangementer. En solid og arbejdsvenlig løsning med god plads til både optræden og teknik.</p>
+
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Konstruktion og sikkerhed</div>
+          <ul class="ss-std-feat-list">
+            <li>Alt er i let aluminium – derved undgås tunge løft</li>
+            <li>Alt bliver samlet på jorden</li>
+            <li>Ingen skal op og arbejde i højderne</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Plads og fleksibilitet</div>
+          <ul class="ss-std-feat-list">
+            <li>10 × 12 m scene – velegnet til både mindre og mellemstore arrangementer</li>
+            <li>Scenegulvet kan justeres fra 70 cm til 2 m i højden</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Anvendelse</div>
+          <ul class="ss-std-feat-list">
+            <li>Ideel til koncerter, firmaevents, byfester og mindre festivaler</li>
+            <li>Giver god plads til både artister og teknisk opsætning</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Praktisk info</div>
+          <ul class="ss-std-feat-list">
+            <li>Pris pr. døgn: Indhent et godt tilbud</li>
+            <li>Ring og få en snak med Morten Lind på 40 63 42 24</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Opsætning</div>
+          <ul class="ss-std-feat-list">
+            <li>Arrangøren stiller ca. 8–10 frivillige medhjælpere til rådighed ved opsætning og nedtagning</li>
+          </ul>
+        </div>
+
+        <div class="ss-std-card-footer">
+          <p>STC kan lave scener i mange forskellige mål, alt efter behov.</p>
         </div>
       </div>
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Scene og tekniske specifikationer</div>
-        <div class="ss-feature-body">
-          PA-vinger (belastning op til 1 ton pr. side)
+
+      <!-- Kort 3 -->
+      <div class="ss-std-card fade-up">
+        <p class="ss-std-card-eyebrow">Stor festivalscene</p>
+        <h3 class="ss-std-card-h">15 × 15 – 15 × 12 m scene</h3>
+        <p class="ss-std-card-desc">Dette er en stor og solid scene, velegnet til større arrangementer og musikfestivaler. En driftssikker løsning med god plads til både artister og teknik.</p>
+
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Konstruktion og sikkerhed</div>
+          <ul class="ss-std-feat-list">
+            <li>Alt er i let aluminium – derved undgås tunge løft</li>
+            <li>Alt bliver samlet på jorden</li>
+            <li>Ingen skal op og arbejde i højderne</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Plads og kapacitet</div>
+          <ul class="ss-std-feat-list">
+            <li>15 × 15 m scene – god plads til større produktioner</li>
+            <li>Velegnet til koncerter, festivaler og større events</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Scene og tekniske specifikationer</div>
+          <ul class="ss-std-feat-list">
+            <li>PA-vinger (belastning op til 1 ton pr. side)</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Medfølgende udstyr</div>
+          <ul class="ss-std-feat-list">
+            <li>4 rulle-podier</li>
+            <li>Mixertelt (6 × 5 m)</li>
+            <li>Gorillahegn</li>
+            <li>25 m² lukket sættevogn som ekstra backstage</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Praktisk info</div>
+          <ul class="ss-std-feat-list">
+            <li>Pris pr. døgn eller 3–4 dage: Indhent et godt tilbud</li>
+            <li>Ring og få en snak med Morten Lind på 40 63 42 24</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Tilbud og fleksibilitet</div>
+          <ul class="ss-std-feat-list">
+            <li>Fortæl os om jeres arrangement – vi sammensætter en løsning, der passer til jeres behov</li>
+          </ul>
+        </div>
+        <div class="ss-std-feat">
+          <div class="ss-std-feat-title">Opsætning</div>
+          <ul class="ss-std-feat-list">
+            <li>Arrangøren stiller ca. 10 frivillige medhjælpere til rådighed</li>
+            <li>Opsætning: ca. 6–10 timer afhængig af forhold</li>
+            <li>Nedtagning: ca. 6–8 timer</li>
+          </ul>
         </div>
       </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Medfølgende udstyr</div>
-        <div class="ss-feature-body">
-          4 rulle-podier · Mixertelt (6 × 5 m) · Gorillahegn<br>
-          25 m² lukket sættevogn som ekstra backstage
+
+      <!-- Kort 4 -->
+      <div class="ss-std-card fade-up d1" style="display:flex;flex-direction:column;justify-content:center;">
+        <p class="ss-std-card-eyebrow">Praktisk hjælp</p>
+        <h3 class="ss-std-card-h">Brug for mandskab?</h3>
+        <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:0;">Vi lejer hands ud, der kan løse mange opgaver for jer. Ring til Morten Lind på <strong>40 63 42 24</strong>. Hvis du ønsker det, kan vi sætte det hele op for dig, få et tilbud!</p>
+        <div class="ss-std-card-footer">
+          <a href="../kontakt.html" class="btn btn-primary" style="align-self:flex-start;">Få et tilbud</a>
         </div>
       </div>
-      <div class="ss-feature fade-up">
-        <div class="ss-feature-title">Praktisk info</div>
-        <div class="ss-feature-body">
-          Pris pr. døgn eller 3–4 dage: Indhent et godt tilbud<br>
-          Ring og få en snak med Morten Lind på 40 63 42 24
-        </div>
-      </div>
-      <div class="ss-feature fade-up d1">
-        <div class="ss-feature-title">Opsætning</div>
-        <div class="ss-feature-body">
-          Arrangøren stiller ca. 10 frivillige medhjælpere til rådighed<br>
-          Opsætning: ca. 6–10 timer afhængig af forhold<br>
-          Nedtagning: ca. 6–8 timer
-        </div>
-      </div>
-    </div>
-    <div class="ss-intro-body fade-up" style="margin-top:24px;">
-      <p>Fortæl os om jeres arrangement – vi sammensætter en løsning, der passer til jeres behov.</p>
+
     </div>
   </div>
 </section>
 
-<!-- MANDSKAB -->
-<section class="ss-section">
+<!-- TOTALLØSNING -->
+<section class="ss-std" style="padding-top:0;">
   <div class="container">
-    <div class="ss-feature fade-up" style="max-width:640px;">
-      <div class="ss-feature-title">Brug for mandskab?</div>
-      <div class="ss-feature-body">Vi lejer hands ud, der kan løse mange opgaver for jer. Ring til Morten Lind på 40 63 42 24. Hvis du ønsker det, kan vi sætte det hele op for dig, få et tilbud!</div>
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Få en</p>
+      <h2 class="ss-std-intro-h">Totalløsning</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Alt under ét tag</p>
+      <h3 class="ss-std-card-h">Få en totalløsning</h3>
+      <p class="ss-std-card-desc">Vi er gerne behjælpelige med anskaffelse af mobile toiletter, telte, generatorer og lys og lyd i en totalløsning. Vi kan hjælpe dig med det hele.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Mange vælger at få en totalløsning fra STC, så skal du kun tale med en mand – Morten Lind. <strong>40 63 42 24</strong>.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC giver dig gerne et tilbud på en hel pakke, hvor alt er med til jeres event.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Vi lejer også meget gerne kun scene ud til jer. Da STC har arbejdet med det her i over 30 år, har vi set og hørt meget — hvis du har brug for hjælp, så brug STC som konsulent.</p>
+      <div class="ss-std-card-footer">
+        <a href="../kontakt.html" class="btn btn-primary" style="align-self:flex-start;">Få et tilbud</a>
+        <a href="tel:40634224" class="btn btn-outline" style="align-self:flex-start;">Ring 40 63 42 24</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MÆNGDERABAT -->
+<section class="ss-std" style="padding-top:0;">
+  <div class="container">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Spar mere ved</p>
+      <h2 class="ss-std-intro-h">Mængderabat</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Rabat ved større ordrer</p>
+      <h3 class="ss-std-card-h">Vi tilbyder mængderabat</h3>
+      <p class="ss-std-card-desc">Vi er gerne behjælpelige med anskaffelse af mobile toiletter, telte, generatorer og lys og lyd i en totalløsning. Vi kan hjælpe dig med det hele.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Mange vælger at få en totalløsning fra STC, så skal du kun tale med en mand – Morten Lind. <strong>40 63 42 24</strong>.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">STC giver dig gerne et tilbud på en hel pakke, hvor alt er med til jeres event.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Vi lejer også meget gerne kun scene ud til jer. Da STC har arbejdet med det her i over 30 år, har vi set og hørt meget — hvis du har brug for hjælp, så brug STC som konsulent.</p>
+      <div class="ss-std-card-footer">
+        <a href="../kontakt.html" class="btn btn-primary" style="align-self:flex-start;">Få et tilbud</a>
+        <a href="tel:40634224" class="btn btn-outline" style="align-self:flex-start;">Ring 40 63 42 24</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NYE KRAV -->
+<section class="ss-std" style="padding-top:0;">
+  <div class="container">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Vigtigt at vide</p>
+      <h2 class="ss-std-intro-h">Nye krav til arrangører</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Lovgivning og sikkerhed</p>
+      <h3 class="ss-std-card-h">Der er blevet stillet nye krav til arrangører</h3>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">Efter de nye regler kan det af og til være nødvendigt ved dårligt vejr for arrangøren at skaffe mere ballast til scener. Krav til scener bliver større og større og det gør arbejdets opgave også. Det er meget vigtigt, at man som arrangør sætter de nødvendige ressourcer af til sceneområdet. Der er kommet en lang række nye krav <strong>som arrangørerne også skal leve op til — husk det.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALSCENE -->
+<section class="ss-std" style="padding-top:0;">
+  <div class="container">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Skræddersyet løsning</p>
+      <h2 class="ss-std-intro-h">Specialscene</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Tilpassede løsninger</p>
+      <h3 class="ss-std-card-h">Specialscene</h3>
+      <p class="ss-std-card-desc">Vi kan også lave en sceneløsning hvor to 12×12 m eller 15×15 m scener står ved siden af hinanden. Indhent tilbud.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Alle priser på scener er ekskl. moms.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Har du ikke mulighed for at skaffe frivillige, så få et godt tilbud hvor STC sørger for mandskab til opstilling og nedtagning af scene, alt udstyr og tilbehør.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Alle vores scener leveres med nye brandgodkendte presenninger fremstillet i Danmark. Alle vores sikkerhedsting bliver godkendt hver 12. måned.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">De 4 nævnte er standardmål. Skulle du imidlertid være interesseret i andre størrelser og/eller udformninger, vil det med vores udstyr være muligt at sammensætte specielle scener.</p>
+      <div class="ss-std-card-footer">
+        <a href="tel:40634224" class="btn btn-primary" style="align-self:flex-start;">Ring og hør nærmere — 40 63 42 24</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARBEJDSFORHOLD -->
+<section class="ss-std" style="padding-top:0;">
+  <div class="container">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Sikkerhed og ansvar</p>
+      <h2 class="ss-std-intro-h">Arbejdsforhold</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Professionel opsætning</p>
+      <h3 class="ss-std-card-h">Arbejdsforhold</h3>
+      <p class="ss-std-card-desc">Det er vigtigt, at arbejdsforholdene er i orden, og at det nødvendige mandskab er til rådighed ved opbygning af større scener.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;margin-bottom:16px;">Vi sikrer sammen, at gældende regler overholdes, så arrangementet gennemføres sikkert og professionelt.</p>
+      <p style="font-size:14px;color:var(--text-2);line-height:1.8;">STC overholder alle krav og rådgiver jer gennem hele processen, så vi skaber et succesfuldt event.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TILBEHØR -->
+<section class="ss-std" style="padding-top:0;">
+  <div class="container">
+    <div class="ss-std-intro fade-up">
+      <p class="ss-std-intro-lead">Ekstraudstyr til din scene</p>
+      <h2 class="ss-std-intro-h">Tilbehør</h2>
+    </div>
+    <div class="ss-std-card fade-up d1" style="max-width:760px;">
+      <p class="ss-std-card-eyebrow">Udstyr og tilbehør</p>
+      <h3 class="ss-std-card-h">Tilbehør</h3>
+      <p class="ss-std-card-desc" style="border-bottom:none;margin-bottom:24px;padding-bottom:0;">Alt det ekstra udstyr du behøver til et komplet sceneopstilling.</p>
+
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Bagtæpper</div>
+        <ul class="ss-std-feat-list">
+          <li>STC kan levere mange forskellige slags bagtæpper, bl.a. stjernebagtæpper og hvide net</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Mixertelte</div>
+        <ul class="ss-std-feat-list">
+          <li>Vi kan levere mange forskellige mål alt efter ønsker og behov</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Rullepodier</div>
+        <ul class="ss-std-feat-list">
+          <li>2,40 × 2,40 m eller 1,20 × 2,40 m</li>
+          <li>STC kan også opbygge anden podieproduktion efter ønsker, følgespottårn</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">Gorillahegn</div>
+        <ul class="ss-std-feat-list">
+          <li>STC har et stort udvalg af gorillahegn og cykelhegn</li>
+        </ul>
+      </div>
+      <div class="ss-std-feat">
+        <div class="ss-std-feat-title">PA-tårne / PA-vinger</div>
+        <ul class="ss-std-feat-list">
+          <li>PA-vingerne som hører med til den store scene kan belastes med 1 ton pr. side</li>
+          <li>Flyvepunkter for hver 3 meter pr. side</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
