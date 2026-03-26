@@ -111,11 +111,13 @@ img { display: block; max-width: 100%; }
 
 /* Price CTA */
 .refs-section { background: var(--bg); padding: 80px 0; }
-.refs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.refs-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 28px 24px; text-align: center; font-size: 15px; font-weight: 600; color: var(--text-2); transition: border-color .2s, color .2s; }
-.refs-item:hover { border-color: rgba(59,130,246,0.4); color: var(--text); }
-@media (max-width: 700px) { .refs-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 460px) { .refs-grid { grid-template-columns: 1fr; } }
+.refs-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 16px; }
+.refs-item { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 24px 20px; display: flex; align-items: center; justify-content: center; min-height: 100px; transition: border-color .2s; }
+.refs-item:hover { border-color: rgba(59,130,246,0.4); }
+.refs-item img { max-width: 100%; max-height: 60px; width: auto; height: auto; object-fit: contain; filter: grayscale(100%) opacity(0.55); transition: filter .3s; }
+.refs-item:hover img { filter: grayscale(0%) opacity(1); }
+@media (max-width: 900px) { .refs-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 500px) { .refs-grid { grid-template-columns: repeat(2, 1fr); } }
 
 .price-cta { background: var(--bg-2); padding: 100px 0; text-align: center; }
 .price-cta-h { font-size: clamp(28px, 4vw, 52px); font-weight: 900; letter-spacing: -0.04em; margin-bottom: 20px; }
