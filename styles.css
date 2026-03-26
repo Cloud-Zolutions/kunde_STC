@@ -223,7 +223,7 @@ img { display: block; max-width: 100%; }
 
 /* Light in nature – locations */
 .lin-locations { padding: 80px 0; background: var(--bg); }
-.lin-loc-block { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: center; margin-bottom: 64px; }
+.lin-loc-block { display: grid; grid-template-columns: 3fr 2fr; gap: 48px; align-items: start; margin-bottom: 64px; }
 .lin-loc-block--reverse { direction: rtl; }
 .lin-loc-block--reverse > * { direction: ltr; }
 .lin-loc-video { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/3; background: #000; }
