@@ -96,11 +96,12 @@ app.post('/api/contact', async (req, res) => {
       [data.navn, data.email, data.telefon, data.emne, data.besked]
     );
 
-    await sendEmail(data);
+    // Send email — log fejl men lad ikke det blokere succesrespons
+    sendEmail(data).catch(err => console.error('Email fejl:', err));
 
     res.json({ success: true });
   } catch (err) {
-    console.error('Error:', err);
+    console.error('Database fejl:', err);
     res.status(500).json({ error: 'Noget gik galt. Prøv igen eller ring til os.' });
   }
 });
