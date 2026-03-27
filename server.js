@@ -6,13 +6,15 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Neon PostgreSQL connection
+// Neon PostgreSQL
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
   ssl: { rejectUnauthorized: false }
 });
 
-// Create table if it doesn't exist
+const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'stc@stc.dk';
+const FROM_EMAIL = process.env.FROM_EMAIL || 'kontakt@stc.dk';
+
 async function initDb() {
   await pool.query(`
     CREATE TABLE IF NOT EXISTS contact_submissions (
@@ -28,10 +30,46 @@ async function initDb() {
   console.log('Database ready');
 }
 
+async function sendEmail({ navn, email, telefon, emne, besked }) {
+  const html = `
+    <div style="font-family:sans-serif;max-width:600px;margin:0 auto;padding:32px;background:#f9f9f9;border-radius:8px;">
+      <h2 style="margin-top:0;color:#111;">Ny henvendelse via stc.dk</h2>
+      <table style="width:100%;border-collapse:collapse;">
+        <tr><td style="padding:8px 0;color:#555;width:120px;"><strong>Navn</strong></td><td style="padding:8px 0;">${navn}</td></tr>
+        <tr><td style="padding:8px 0;color:#555;"><strong>Email</strong></td><td style="padding:8px 0;"><a href="mailto:${email}">${email}</a></td></tr>
+        ${telefon ? `<tr><td style="padding:8px 0;color:#555;"><strong>Telefon</strong></td><td style="padding:8px 0;"><a href="tel:${telefon}">${telefon}</a></td></tr>` : ''}
+        ${emne ? `<tr><td style="padding:8px 0;color:#555;"><strong>Emne</strong></td><td style="padding:8px 0;">${emne}</td></tr>` : ''}
+      </table>
+      <div style="margin-top:20px;padding:20px;background:#fff;border-radius:6px;border-left:4px solid #2563eb;">
+        <strong style="color:#555;">Besked:</strong>
+        <p style="margin:8px 0 0;white-space:pre-wrap;">${besked}</p>
+      </div>
+      <p style="margin-top:24px;font-size:12px;color:#999;">Henvendelsen er gemt i databasen og sendt via stc.dk</p>
+    </div>
+  `;
+
+  const response = await fetch('https://api.smtp2go.com/v3/email/send', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      api_key: process.env.SMTP2GO_API_KEY,
+      to: [NOTIFY_EMAIL],
+      sender: FROM_EMAIL,
+      subject: `Ny henvendelse fra ${navn}${emne ? ` – ${emne}` : ''}`,
+      html_body: html
+    })
+  });
+
+  const data = await response.json();
+  if (!response.ok || data.data?.succeeded !== 1) {
+    throw new Error(`SMTP2GO fejl: ${JSON.stringify(data)}`);
+  }
+}
+
 app.use(express.json());
 app.use(express.static(path.join(__dirname)));
 
-// POST /api/contact — gem henvendelse i Neon
+// POST /api/contact
 app.post('/api/contact', async (req, res) => {
   const { navn, email, telefon, emne, besked } = req.body;
 
@@ -39,26 +77,35 @@ app.post('/api/contact', async (req, res) => {
     return res.status(400).json({ error: 'Navn, email og besked er påkrævet.' });
   }
 
-  // Simpel email-validering
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return res.status(400).json({ error: 'Ugyldig email-adresse.' });
   }
+
+  const data = {
+    navn: navn.trim(),
+    email: email.trim(),
+    telefon: telefon?.trim() || null,
+    emne: emne?.trim() || null,
+    besked: besked.trim()
+  };
 
   try {
     await pool.query(
       `INSERT INTO contact_submissions (navn, email, telefon, emne, besked)
        VALUES ($1, $2, $3, $4, $5)`,
-      [navn.trim(), email.trim(), telefon?.trim() || null, emne?.trim() || null, besked.trim()]
+      [data.navn, data.email, data.telefon, data.emne, data.besked]
     );
+
+    await sendEmail(data);
+
     res.json({ success: true });
   } catch (err) {
-    console.error('DB error:', err);
+    console.error('Error:', err);
     res.status(500).json({ error: 'Noget gik galt. Prøv igen eller ring til os.' });
   }
 });
 
-// Alle andre ruter → index.html (SPA fallback ikke nødvendig her, men god sikkerhed)
-app.get('*', (req, res) => {
+app.get('*', (_req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
