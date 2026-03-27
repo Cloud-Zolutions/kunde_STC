@@ -67,7 +67,54 @@
 <!-- CONTACT SECTION -->
 <section class="contact-section">
   <div class="container">
-    <div class="contact-grid contact-grid--single">
+    <div class="contact-grid">
+      <!-- FORM -->
+      <div class="fade-up d1">
+        <p class="section-eyebrow">Send en besked</p>
+        <h2>Skriv til os</h2>
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="navn">Navn <span class="cf-req">*</span></label>
+              <input type="text" id="navn" name="navn" placeholder="Dit fulde navn" required>
+            </div>
+            <div class="cf-field">
+              <label for="email">Email <span class="cf-req">*</span></label>
+              <input type="email" id="email" name="email" placeholder="din@email.dk" required>
+            </div>
+          </div>
+          <div class="cf-row">
+            <div class="cf-field">
+              <label for="telefon">Telefon</label>
+              <input type="tel" id="telefon" name="telefon" placeholder="12 34 56 78">
+            </div>
+            <div class="cf-field">
+              <label for="emne">Emne</label>
+              <select id="emne" name="emne">
+                <option value="">Vælg emne</option>
+                <option value="Store scener">Store scener</option>
+                <option value="Mobilscener">Mobilscener</option>
+                <option value="Små scener">Små scener</option>
+                <option value="Scenegulv og podier">Scenegulv og podier</option>
+                <option value="Lys og lyd">Lys og lyd</option>
+                <option value="Light in Nature">Light in Nature</option>
+                <option value="Andet">Andet</option>
+              </select>
+            </div>
+          </div>
+          <div class="cf-field">
+            <label for="besked">Besked <span class="cf-req">*</span></label>
+            <textarea id="besked" name="besked" rows="5" placeholder="Beskriv dit event og hvad du har brug for..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary cf-submit" id="cfSubmit">
+            <span id="cfBtnText">Send besked</span>
+            <svg id="cfSpinner" style="display:none;width:18px;height:18px;animation:spin 1s linear infinite;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" stroke-opacity=".25"/><path d="M12 2a10 10 0 0 1 10 10" /></svg>
+          </button>
+          <div id="cfSuccess" style="display:none;" class="cf-notice cf-notice--ok">Tak! Vi vender tilbage hurtigst muligt.</div>
+          <div id="cfError" style="display:none;" class="cf-notice cf-notice--err"></div>
+        </form>
+      </div>
+
       <!-- INFO -->
       <div class="contact-info fade-up">
         <p class="section-eyebrow">Kontaktoplysninger</p>
@@ -180,5 +227,56 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+  // Kontaktformular
+  const form = document.getElementById('contactForm');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = document.getElementById('cfSubmit');
+      const btnText = document.getElementById('cfBtnText');
+      const spinner = document.getElementById('cfSpinner');
+      const success = document.getElementById('cfSuccess');
+      const error = document.getElementById('cfError');
+
+      btn.disabled = true;
+      btnText.textContent = 'Sender...';
+      spinner.style.display = 'inline-block';
+      success.style.display = 'none';
+      error.style.display = 'none';
+
+      const data = {
+        navn: document.getElementById('navn').value,
+        email: document.getElementById('email').value,
+        telefon: document.getElementById('telefon').value,
+        emne: document.getElementById('emne').value,
+        besked: document.getElementById('besked').value
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (res.ok) {
+          success.style.display = 'block';
+          form.reset();
+        } else {
+          error.textContent = json.error || 'Noget gik galt. Prøv igen.';
+          error.style.display = 'block';
+        }
+      } catch {
+        error.textContent = 'Kunne ikke sende. Tjek din forbindelse og prøv igen.';
+        error.style.display = 'block';
+      } finally {
+        btn.disabled = false;
+        btnText.textContent = 'Send besked';
+        spinner.style.display = 'none';
+      }
+    });
+  }
+</script>
 </body>
 </html>

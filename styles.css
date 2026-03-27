@@ -244,17 +244,33 @@ img { display: block; max-width: 100%; }
 .contact-section { padding: 100px 0; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
 .contact-grid--single { grid-template-columns: 1fr; max-width: 600px; }
-.contact-info h2 { font-size: clamp(34px, 3.5vw, 60px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 20px; }
-.contact-info p { font-size: 22px; color: var(--text-2); line-height: 1.8; margin-bottom: 32px; }
+.contact-info h2 { font-size: clamp(28px, 3vw, 48px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 20px; }
+.contact-info p { font-size: 18px; color: var(--text-2); line-height: 1.8; margin-bottom: 32px; }
 .contact-details { display: flex; flex-direction: column; gap: 16px; }
-.contact-detail { display: flex; align-items: center; gap: 14px; font-size: 21px; color: var(--text-2); }
+.contact-detail { display: flex; align-items: center; gap: 14px; font-size: 18px; color: var(--text-2); }
 .contact-detail svg { width: 20px; height: 20px; flex-shrink: 0; color: var(--blue-light); }
-.contact-form { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--r); padding: 40px; }
-.form-group { margin-bottom: 20px; }
-.form-group label { display: block; font-size: 17px; font-weight: 600; color: var(--text-2); margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.06em; }
-.form-group input, .form-group textarea { width: 100%; background: rgba(255,255,255,0.05); border: 1px solid var(--border); border-radius: 6px; padding: 13px 16px; color: #fff; font-size: 20px; font-family: inherit; transition: border-color .2s; }
-.form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--blue); }
-.form-group textarea { resize: vertical; min-height: 120px; }
+
+/* Contact form */
+.contact-form { display: flex; flex-direction: column; gap: 18px; }
+.contact-form h2 { font-size: clamp(28px, 3vw, 48px); font-weight: 900; letter-spacing: -0.03em; margin-bottom: 4px; }
+.cf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.cf-field { display: flex; flex-direction: column; gap: 6px; }
+.cf-field label { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-3); }
+.cf-req { color: var(--blue-light); }
+.cf-field input,
+.cf-field select,
+.cf-field textarea { background: var(--bg-card); border: 1px solid var(--border); border-radius: 8px; padding: 13px 16px; color: #fff; font-size: 16px; font-family: inherit; transition: border-color .2s; width: 100%; }
+.cf-field input:focus,
+.cf-field select:focus,
+.cf-field textarea:focus { outline: none; border-color: var(--blue); }
+.cf-field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px; cursor: pointer; }
+.cf-field select option { background: #1a1a2e; }
+.cf-field textarea { resize: vertical; min-height: 130px; }
+.cf-submit { align-self: flex-start; display: flex; align-items: center; gap: 10px; }
+.cf-notice { padding: 14px 18px; border-radius: 8px; font-size: 15px; font-weight: 500; }
+.cf-notice--ok { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); color: #86efac; }
+.cf-notice--err { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); color: #fca5a5; }
+@keyframes spin { to { transform: rotate(360deg); } }
 
 /* Om os page */
 .section-pad { padding: 88px 0; }
