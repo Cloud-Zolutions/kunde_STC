@@ -79,7 +79,7 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static(path.join(__dirname), { extensions: ['html'] }));
+app.use(express.static(path.join(__dirname), { extensions: ['html'], redirect: false }));
 
 // POST /api/contact
 app.post('/api/contact', async (req, res) => {
