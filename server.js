@@ -68,10 +68,13 @@ async function sendEmail({ navn, email, telefon, emne, besked }) {
 
 app.use(express.json());
 
-// Redirect /side.html → /side
+// Redirect /side.html → /side og /side/ → /side
 app.use((req, res, next) => {
   if (req.path.endsWith('.html')) {
     return res.redirect(301, req.path.slice(0, -5));
+  }
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    return res.redirect(301, req.path.slice(0, -1));
   }
   next();
 });
