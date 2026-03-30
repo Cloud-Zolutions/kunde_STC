@@ -6,10 +6,11 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Neon PostgreSQL
+// PostgreSQL — SSL kun hvis connection string kræver det
+const useSSL = process.env.DATABASE_URL && process.env.DATABASE_URL.includes('sslmode=require');
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }
+  ssl: useSSL ? { rejectUnauthorized: false } : false
 });
 
 const NOTIFY_EMAIL = process.env.NOTIFY_EMAIL || 'stc@stc.dk';
