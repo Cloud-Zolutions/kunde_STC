@@ -67,7 +67,16 @@ async function sendEmail({ navn, email, telefon, emne, besked }) {
 }
 
 app.use(express.json());
-app.use(express.static(path.join(__dirname)));
+
+// Redirect /side.html → /side
+app.use((req, res, next) => {
+  if (req.path.endsWith('.html')) {
+    return res.redirect(301, req.path.slice(0, -5));
+  }
+  next();
+});
+
+app.use(express.static(path.join(__dirname), { extensions: ['html'] }));
 
 // POST /api/contact
 app.post('/api/contact', async (req, res) => {
