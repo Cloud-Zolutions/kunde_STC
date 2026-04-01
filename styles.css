@@ -232,6 +232,10 @@ img { display: block; max-width: 100%; }
 .lin-loc-text h3 { font-size: clamp(22px, 2.2vw, 32px); font-weight: 800; letter-spacing: -0.02em; margin-bottom: 12px; }
 .lin-loc-text p { font-size: 18px; color: var(--text-2); line-height: 1.8; margin-bottom: 10px; }
 
+/* Morten Lind card grids */
+.lin-cards-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.lin-cards-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+
 /* Light in nature page */
 .lin-gallery { padding: 80px 0; background: var(--bg); }
 .lin-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
@@ -351,6 +355,7 @@ img { display: block; max-width: 100%; }
   .sol-tab { width: 100%; text-align: center; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .contact-grid { grid-template-columns: 1fr; }
+  .lin-cards-3, .lin-cards-2 { grid-template-columns: 1fr; }
 }
 @media (max-width: 480px) {
   .offers-grid { grid-template-columns: 1fr 1fr; }
